@@ -12,6 +12,16 @@ sumToN(-8)  // returns null
 ***********************************************************************/
 
 // your code here
+function sumToN(n) {
+  if (n < 0) {
+    return null; 
+  } else {
+    let sum = n; 
+    sum += sumToN(n-1); 
+    return sum; 
+  } 
+}; 
+console.log(sumToN(5)); 
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
