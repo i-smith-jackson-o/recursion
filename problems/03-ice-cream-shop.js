@@ -14,6 +14,17 @@ iceCreamShop([], 'honey lavender'); // false
 
 
 // your code here
+function iceCreamShop(arr, str) {
+  if (arr.length === 0) {
+    return false; 
+  }
+  if (str.includes(arr[0])) {
+    return true; 
+  } else {
+    return iceCreamShop(arr.slice(1), str); 
+  }
+}
+
 
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
