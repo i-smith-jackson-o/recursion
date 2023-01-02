@@ -12,8 +12,12 @@ range(7, 6); // []
 
 
 // your code here
-function range(a, b) {
-  
+function range(start,end) {
+  if (start >= end) {
+    return [];  
+  } else {
+    return [start].concat(range(start + 1, end)); 
+  }
 }
 
 

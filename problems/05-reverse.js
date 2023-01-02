@@ -13,6 +13,13 @@ reverse(""); // ""
 ***********************************************************************/
 
 // your code here
+function reverse(str) {
+  if (str.length === 0) {
+    return ""; 
+  } else {
+    return reverse(str.substring(1)) + str.charAt(0);  
+  }
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
