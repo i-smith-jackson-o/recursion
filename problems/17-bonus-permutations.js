@@ -13,6 +13,18 @@ permutations([1, 2, 3]) // [[1, 2, 3], [1, 3, 2],
 ***********************************************************************/
 
 // your code here
+function permutations(array) {
+  if (array.length === 0) {
+    return [[]]; 
+  }
+  let perms = []; 
+  for (let i = 0; i < array.length; i++) {
+    let rest = array.slice(0,i).concat(array.slice(i + 1)); 
+    let restPerms = permutations(rest); 
+    restPerms.forEach(perm => perms.push([array[i]].concat(perm))); 
+  }
+  return perms; 
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {

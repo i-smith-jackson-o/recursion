@@ -1,9 +1,9 @@
 /***********************************************************************
 Write a recursive function that will find the best way to make change from a
-given set of coin values for a given amount of money. The set of coin values
+given set of coin values for a given target of money. The set of coin values
 should default to using pennies (1 cent), nickels (5 cents), dimes (10 cents),
 and quarters (25 cents). Return `null` if there are no possible ways to make
-change for the given target amount.
+change for the given target target.
 
 Examples:
 
@@ -18,7 +18,7 @@ Here's a game plan for solving the problem:
 First, write a 'greedy' version called `greedyMakeChange`:
 
 Take as many of the biggest coin as possible and add them to your result.
-Add to the result by recursively calling your method on the remaining amount,
+Add to the result by recursively calling your method on the remaining target,
 leaving out the biggest coin, until the remainder is zero.
 Once you have a working greedy version, talk with your partner about refactoring
 this to `makeBetterChange`. What's wrong with `greedyMakeChange`?
@@ -53,14 +53,28 @@ solution so that it only calculates and compares all of the different
 combinations.
 ***********************************************************************/
 
-function greedyMakeChange(target, coins = [25, 10, 5, 1]) {
-  // no tests for greedyMakeChange so make sure to test this on your own
-  // your code here
-}
 
 function makeBetterChange(target, coins = [25, 10, 5, 1]) {
   // your code here
+  if (target === 0) {
+    return []; 
+  } 
+  if (target < 0 || coins.length === 0) {
+    return null; 
+  }
+  let bestChange = null; 
+  for (let i = 0; i < coins.length; i++) {
+    let changeForRest = makeBetterChange(target - coins[i], coins.slice(i)); 
+    if (changeForRest !== null) {
+      let change = [coins[i]].concat(changeForRest); 
+      if (bestChange === null || change.length < bestChange.length) {
+        bestChange = change; 
+      }
+    }
+  }
+  return bestChange; 
 }
+console.log(makeBetterChange(21), [1, 10, 10]); 
 
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
