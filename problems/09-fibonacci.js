@@ -18,8 +18,33 @@ fibonacci(3); // 2
 fibonacci(4); // 3
 fibonacci(10); // 55
 ***********************************************************************/
+/*
+function fibonacciSequence(num) {
+  let arr = [];
+  let n1 = 1, n2 = 1, nextTerm;
+
+  for (let i = 0; i < num; i++ ) {
+      arr.push(n1);
+      nextTerm = n1 + n2;
+      n1 = n2
+      n2 = nextTerm;
+  }
+  return arr;
+}
+*/
+
+
 
 // your code here
+function fibonacci(n) {
+  if (n == 0) {
+    return 0; 
+  } else if (n == 1) {
+    return 1; 
+  } else {
+    return fibonacci(n - 1) + fibonacci(n - 2); 
+  }
+}
   
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
